@@ -499,11 +499,16 @@
       box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(184, 184, 200, 0.1);
     }
 
-    .community-links a svg {
+    .community-links a svg,
+    .community-links a .community-icon-img {
       width: 24px;
       height: 24px;
       flex-shrink: 0;
       opacity: 0.95;
+    }
+
+    .community-links a .community-icon-img {
+      object-fit: contain;
     }
 
     /* How to Buy */
@@ -648,10 +653,10 @@
       <div class="community-links">
         <a href="https://x.com/i/communities/2018227931307483394" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          X-Community
+          Community
         </a>
         <a href="https://dexscreener.com/solana/am6se8kuxjbuxvywwttigfrax2avqwh5b6qhcjvadxtl" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          <img src="https://dexscreener.com/favicon.ico" alt="" width="24" height="24" class="community-icon-img" />
           DexScreener
         </a>
         <a href="https://t.co/fHR77KpH03" target="_blank" rel="noopener">
@@ -659,8 +664,8 @@
           Telegram
         </a>
         <a href="https://join.pump.fun/HSag/5wibasq4" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          Buy on Pump.fun
+          <img src="https://pump.fun/favicon.ico" alt="" width="24" height="24" class="community-icon-img" />
+          Pump.fun
         </a>
       </div>
     </section>
