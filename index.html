@@ -66,13 +66,20 @@
       content: '';
       position: fixed;
       inset: 0;
-      background-image: 
-        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-      background-size: 64px 64px;
+      background-image:
+        radial-gradient(circle at 17% 23%, rgba(220, 225, 240, 0.25) 0%, transparent 0.8%),
+        radial-gradient(circle at 83% 41%, rgba(200, 208, 230, 0.22) 0%, transparent 0.6%),
+        radial-gradient(circle at 41% 78%, rgba(210, 215, 235, 0.2) 0%, transparent 0.7%),
+        radial-gradient(circle at 62% 12%, rgba(230, 232, 245, 0.18) 0%, transparent 0.5%),
+        radial-gradient(circle at 9% 55%, rgba(205, 212, 232, 0.2) 0%, transparent 0.6%),
+        radial-gradient(circle at 91% 87%, rgba(215, 220, 238, 0.22) 0%, transparent 0.55%),
+        radial-gradient(circle at 33% 34%, rgba(225, 228, 242, 0.15) 0%, transparent 0.65%),
+        radial-gradient(circle at 77% 66%, rgba(200, 210, 230, 0.2) 0%, transparent 0.7%);
+      background-size: 320px 320px, 280px 280px, 350px 350px, 300px 300px, 260px 260px, 310px 310px, 290px 290px, 340px 340px;
+      background-position: 0 0, 40px 60px, 100px 20px, 20px 120px, 80px 80px, 120px 40px, 60px 100px, 10px 50px;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.6;
+      opacity: 0.85;
     }
 
     .container {
@@ -193,9 +200,56 @@
     }
 
     /* Header / Hero */
+    .hero-contract-wrap {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero-contract-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 5%, rgba(192, 192, 210, 0.9) 25%, rgba(212, 212, 230, 1) 50%, rgba(192, 192, 210, 0.9) 75%, transparent 95%);
+      z-index: 2;
+      box-shadow: 0 0 16px rgba(200, 200, 220, 0.5);
+    }
+
+    .hero-video-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(6, 6, 10, 0.85) 0%, rgba(6, 6, 10, 0.75) 50%, rgba(6, 6, 10, 0.9) 100%);
+      z-index: 1;
+    }
+
+    .hero-contract-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
     .hero {
-      padding: 100px 28px 72px;
+      padding: 100px 28px 48px;
       text-align: center;
+    }
+
+    .hero-content {
+      position: relative;
     }
 
     .logo {
@@ -242,6 +296,10 @@
     }
 
     /* Contract */
+    .hero-contract-wrap .contract-section {
+      padding: 48px 0 72px;
+    }
+
     .contract-section {
       padding: 48px 28px;
       text-align: center;
@@ -612,22 +670,31 @@
     </div>
   </nav>
 
+  <div class="hero-contract-wrap">
+    <video class="hero-video-bg" autoplay muted loop playsinline>
+      <source src="video_silverinu.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-contract-inner">
+      <header class="hero" id="home">
+        <div class="hero-content">
+          <p class="logo">Silverinu</p>
+          <h1>$SILVERINU</h1>
+          <p class="tagline">Forged in silver, backed by the pack.</p>
+        </div>
+      </header>
+      <section class="contract-section" id="contract">
+        <p class="contract-label">Contract Address</p>
+        <div class="contract-box-wrap">
+          <code class="contract-box" id="contract-address">HMc4QzqyULo11uSGnj9NvwHrTwAAjXbDWdXqnXzq4a8B</code>
+          <button type="button" class="copy-btn" id="copy-btn" aria-label="Copy address">Copy</button>
+        </div>
+        <a href="https://dexscreener.com/solana/am6se8kuxjbuxvywwttigfrax2avqwh5b6qhcjvadxtl" target="_blank" rel="noopener" class="chart-link">View on DexScreener →</a>
+      </section>
+    </div>
+  </div>
+
   <div class="container">
-    <header class="hero" id="home">
-      <p class="logo">Silverinu</p>
-      <h1>$SILVERINU</h1>
-      <p class="tagline">Forged in silver, backed by the pack.</p>
-    </header>
-
-    <section class="contract-section" id="contract">
-      <p class="contract-label">Contract Address</p>
-      <div class="contract-box-wrap">
-        <code class="contract-box" id="contract-address">HMc4QzqyULo11uSGnj9NvwHrTwAAjXbDWdXqnXzq4a8B</code>
-        <button type="button" class="copy-btn" id="copy-btn" aria-label="Copy address">Copy</button>
-      </div>
-      <a href="https://dexscreener.com/solana/am6se8kuxjbuxvywwttigfrax2avqwh5b6qhcjvadxtl" target="_blank" rel="noopener" class="chart-link">View on DexScreener →</a>
-    </section>
-
     <section id="about">
       <span class="section-label" aria-hidden="true"></span>
       <h2>About Silverinu</h2>
