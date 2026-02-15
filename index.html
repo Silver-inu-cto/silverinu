@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Silverinu – $SILVERINU</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-dark: #060608;
+      --bg-card: #0e0e12;
+      --bg-elevated: #14141a;
+      --silver: #b8b8c8;
+      --silver-light: #e4e4ec;
+      --silver-muted: #787890;
+      --accent: #9ca8b8;
+      --border: rgba(30, 30, 40, 0.4);
+      --border-glow: rgba(184, 184, 200, 0.08);
+      --text: #e4e4ec;
+      --text-muted: #6a6a7a;
+      --gradient-silver: linear-gradient(135deg, #c8c8d8 0%, #9090a0 50%, #a0a0b0 100%);
+      --gradient-silver-subtle: linear-gradient(180deg, rgba(200,200,216,0.12) 0%, transparent 60%);
+      --silver-glow: rgba(184, 184, 200, 0.25);
+      --silver-glow-soft: rgba(184, 184, 200, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Layered background: grid + gradients + orbs */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: 
+        linear-gradient(180deg, transparent 0%, rgba(20,20,26,0.6) 100%),
+        radial-gradient(ellipse 100% 80% at 50% -30%, rgba(184, 184, 200, 0.12), transparent 50%),
+        radial-gradient(ellipse 70% 50% at 90% 20%, rgba(120, 130, 150, 0.08), transparent 45%),
+        radial-gradient(ellipse 60% 60% at 10% 80%, rgba(100, 110, 130, 0.06), transparent 45%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Site header / Nav */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(6, 6, 8, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 0 0 var(--silver-glow-soft), 0 4px 24px -4px rgba(184, 184, 200, 0.06);
+    }
+
+    .site-header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 6px;
+      display: flex;
+      align-items: center;
+      min-height: 64px;
+    }
+
+    .site-header .header-left {
+      flex: 1;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .site-header .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      color: var(--silver-light);
+      text-decoration: none;
+    }
+
+    .site-header .brand:hover {
+      color: var(--silver);
+    }
+
+    .site-header .brand-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      box-shadow: 0 0 16px var(--silver-glow-soft), 0 0 0 1px rgba(184, 184, 200, 0.15);
+    }
+
+    .site-header .header-center {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--silver-muted);
+      text-decoration: none;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      color: var(--silver-light);
+      background: var(--bg-card);
+      border-color: var(--border);
+    }
+
+    .site-header .header-right {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .site-header .btn-buy {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--bg-dark);
+      background: var(--gradient-silver);
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .site-header .btn-buy:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(184, 184, 200, 0.35);
+    }
+
+    /* Header / Hero */
+    .hero {
+      padding: 100px 28px 72px;
+      text-align: center;
+    }
+
+    .logo {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      color: var(--silver-muted);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      background: var(--bg-card);
+    }
+
+    h1 {
+      font-family: 'Syne', 'Space Grotesk', sans-serif;
+      font-size: clamp(2.75rem, 9vw, 4.25rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      background: var(--gradient-silver);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 20px var(--silver-glow-soft)) drop-shadow(0 0 40px rgba(184, 184, 200, 0.15));
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: var(--silver-muted);
+      max-width: 420px;
+      margin: 0 auto;
+      line-height: 1.5;
+      animation: fadeInUp 0.8s ease-out 0.15s both;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Contract */
+    .contract-section {
+      padding: 48px 28px;
+      text-align: center;
+      animation: fadeInUp 0.8s ease-out 0.25s both;
+    }
+
+    .contract-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .contract-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 22px;
+      font-family: ui-monospace, 'SF Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--silver);
+      word-break: break-all;
+      letter-spacing: 0.04em;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.02) inset, 0 0 20px var(--silver-glow-soft), 0 0 40px rgba(184, 184, 200, 0.05);
+    }
+
+    .contract-box-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .contract-box-wrap .contract-box {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .copy-btn {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      color: var(--silver);
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .copy-btn:hover {
+      background: var(--silver-muted);
+      border-color: var(--silver-muted);
+      color: var(--bg-dark);
+      transform: translateY(-1px);
+    }
+
+    .copy-btn.copied {
+      color: #0a0a0c;
+      background: #6bc96b;
+      border-color: #6bc96b;
+    }
+
+    .chart-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s, gap 0.2s;
+    }
+
+    .chart-link:hover {
+      color: var(--silver-light);
+      gap: 12px;
+    }
+
+    /* Section titles */
+    .section-label {
+      display: inline-block;
+      width: 32px;
+      height: 3px;
+      background: var(--gradient-silver);
+      border-radius: 2px;
+      margin-bottom: 16px;
+      box-shadow: 0 0 10px var(--silver-glow), 0 0 20px var(--silver-glow-soft);
+    }
+
+    /* About */
+    section {
+      padding: 64px 28px;
+    }
+
+    section h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--silver-light);
+      margin-bottom: 12px;
+      text-shadow: 0 0 24px var(--silver-glow-soft), 0 0 48px rgba(184, 184, 200, 0.08);
+    }
+
+    .about-intro {
+      color: var(--silver-muted);
+      margin-bottom: 36px;
+      font-size: 1.08rem;
+      max-width: 520px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 28px 28px 32px;
+      margin-bottom: 18px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px var(--silver-glow-soft), 0 0 0 1px rgba(184, 184, 200, 0.04);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--gradient-silver);
+      opacity: 0.6;
+      border-radius: 3px 0 0 3px;
+      box-shadow: 0 0 12px var(--silver-glow-soft);
+    }
+
+    .card:hover {
+      border-color: rgba(184, 184, 200, 0.2);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--silver-glow-soft), 0 0 30px var(--silver-glow-soft);
+      transform: translateY(-2px);
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--silver-light);
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--silver-muted);
+      font-size: 0.98rem;
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+
+    .card a {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s, color 0.2s;
+    }
+
+    .card a:hover {
+      color: var(--silver-light);
+      gap: 10px;
+    }
+
+    /* Join The Community */
+    .community-section {
+      margin: 0 -6px;
+      padding: 64px 28px 72px;
+      background: linear-gradient(180deg, rgba(20, 20, 26, 0.6) 0%, rgba(14, 14, 18, 0.95) 50%);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 0 30px var(--silver-glow-soft), 0 0 60px rgba(184, 184, 200, 0.06), inset 0 0 40px rgba(184, 184, 200, 0.02);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .community-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(184, 184, 200, 0.35), transparent);
+      box-shadow: 0 0 8px var(--silver-glow-soft);
+      pointer-events: none;
+    }
+
+    .community-section .container {
+      max-width: 900px;
+    }
+
+    .community-section .section-label {
+      margin-bottom: 14px;
+    }
+
+    .community-section h2 {
+      margin-bottom: 10px;
+      font-size: 1.75rem;
+      text-shadow: 0 0 20px var(--silver-glow-soft), 0 0 40px rgba(184, 184, 200, 0.1);
+    }
+
+    .community-desc {
+      color: var(--silver-muted);
+      margin-bottom: 40px;
+      font-size: 1.05rem;
+      text-align: left;
+    }
+
+    .community-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    .community-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--silver-light);
+      padding: 18px 26px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.25s ease;
+      min-width: 160px;
+      justify-content: center;
+      box-shadow: 0 4px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    .community-links a:hover {
+      border-color: rgba(184, 184, 200, 0.25);
+      background: linear-gradient(145deg, rgba(184, 184, 200, 0.06) 0%, var(--bg-card) 100%);
+      color: var(--silver-light);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(184, 184, 200, 0.1);
+    }
+
+    .community-links a svg {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      opacity: 0.95;
+    }
+
+    /* How to Buy */
+    .steps {
+      display: grid;
+      gap: 0;
+      margin-top: 28px;
+    }
+
+    .step {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      position: relative;
+      padding-bottom: 28px;
+    }
+
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 52px;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--border) 0%, transparent 100%);
+      border-radius: 1px;
+    }
+
+    .step-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--silver);
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      transition: all 0.25s ease;
+      box-shadow: 0 0 12px var(--silver-glow-soft);
+    }
+
+    .step:hover .step-num {
+      border-color: rgba(184, 184, 200, 0.2);
+      box-shadow: 0 0 20px var(--silver-glow-soft), 0 0 30px rgba(184, 184, 200, 0.08);
+    }
+
+    .step h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--silver-light);
+      margin-bottom: 6px;
+    }
+
+    .step p {
+      color: var(--silver-muted);
+      font-size: 0.96rem;
+      line-height: 1.55;
+    }
+
+    /* Footer */
+    footer {
+      padding: 56px 28px 40px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    footer p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      letter-spacing: 0.02em;
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-header" aria-label="Main navigation">
+    <div class="site-header-inner">
+      <div class="header-left">
+        <a href="#home" class="brand">
+          <img src="logo_silverinu.png" alt="Silverinu" class="brand-logo" width="36" height="36" />
+          SILVERINU
+        </a>
+      </div>
+      <div class="header-center">
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#contract">Contract</a>
+          <a href="#about">About</a>
+          <a href="#community">Community</a>
+          <a href="#how-to-buy">How to Buy</a>
+        </div>
+      </div>
+      <div class="header-right">
+        <a href="https://join.pump.fun/HSag/5wibasq4" target="_blank" rel="noopener" class="btn-buy">Buy Silverinu</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <header class="hero" id="home">
+      <p class="logo">Silverinu</p>
+      <h1>SILVERINU</h1>
+      <p class="tagline">Trading silver on the blockchain. The meme coin for the precious metals crowd.</p>
+    </header>
+
+    <section class="contract-section" id="contract">
+      <p class="contract-label">Contract Address</p>
+      <div class="contract-box-wrap">
+        <code class="contract-box" id="contract-address">HMc4QzqyULo11uSGnj9NvwHrTwAAjXbDWdXqnXzq4a8B</code>
+        <button type="button" class="copy-btn" id="copy-btn" aria-label="Copy address">Copy</button>
+      </div>
+      <a href="https://dexscreener.com/solana/am6se8kuxjbuxvywwttigfrax2avqwh5b6qhcjvadxtl" target="_blank" rel="noopener" class="chart-link">View on DexScreener →</a>
+    </section>
+
+    <section id="about">
+      <span class="section-label" aria-hidden="true"></span>
+      <h2>About Silverinu</h2>
+      <p class="about-intro">$SILVERINU is a community-driven meme coin on Solana, celebrating silver and commodity vibes on-chain. Trade with the pack.</p>
+
+      <div class="card">
+        <h3>Pump.fun & Solana</h3>
+        <p>Silverinu launched on Pump.fun and trades against SOL. Fast, low fees, and built for the Solana ecosystem.</p>
+        <a href="https://dexscreener.com/solana/am6se8kuxjbuxvywwttigfrax2avqwh5b6qhcjvadxtl" target="_blank" rel="noopener">View on DexScreener →</a>
+      </div>
+
+      <div class="card">
+        <h3>Join The Pack</h3>
+        <p>Stay updated on announcements, memes, and community moves. Follow the CTO and join the Telegram portal.</p>
+        <a href="https://x.com/SilverInu_CTO" target="_blank" rel="noopener">Follow on X →</a>
+      </div>
+    </section>
+
+    <section class="community-section" id="community">
+      <span class="section-label" aria-hidden="true"></span>
+      <h2>Join The Community</h2>
+      <p class="community-desc">Connect with Silverinu traders and stay updated on the latest.</p>
+      <div class="community-links">
+        <a href="https://x.com/SilverInu_CTO" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          X (Twitter)
+        </a>
+        <a href="https://dexscreener.com/solana/am6se8kuxjbuxvywwttigfrax2avqwh5b6qhcjvadxtl" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          DexScreener
+        </a>
+        <a href="https://t.co/fHR77KpH03" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          Telegram
+        </a>
+        <a href="https://join.pump.fun/HSag/5wibasq4" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Buy on Pump.fun
+        </a>
+      </div>
+    </section>
+
+    <section id="how-to-buy">
+      <span class="section-label" aria-hidden="true"></span>
+      <h2>How to Buy Silverinu</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <div>
+            <h3>Create a Wallet</h3>
+            <p>Download Phantom from the App Store, Google Play, or Chrome extension.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <div>
+            <h3>Get Some Solana</h3>
+            <p>Buy SOL on Phantom, transfer, or send from an exchange.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <div>
+            <h3>Open DexScreener or Pump.fun</h3>
+            <p>Use the DexScreener link above to view the pair and trade.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">04</span>
+          <div>
+            <h3>Swap for SILVERINU</h3>
+            <p>Swap your SOL for SILVERINU and join the pack.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>$SILVERINU · Silverinu · Not financial advice.</p>
+    </footer>
+  </div>
+  <script>
+    (function () {
+      var btn = document.getElementById('copy-btn');
+      var address = document.getElementById('contract-address');
+      if (!btn || !address) return;
+      btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(address.textContent).then(function () {
+          btn.textContent = 'Copied!';
+          btn.classList.add('copied');
+          setTimeout(function () {
+            btn.textContent = 'Copy';
+            btn.classList.remove('copied');
+          }, 2000);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
