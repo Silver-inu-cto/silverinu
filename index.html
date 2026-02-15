@@ -4,26 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Silverinu – $SILVERINU</title>
+  <link rel="icon" href="logo_silverinu.png" type="image/png" />
+  <link rel="apple-touch-icon" href="logo_silverinu.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-dark: #060608;
-      --bg-card: #0e0e12;
-      --bg-elevated: #14141a;
-      --silver: #b8b8c8;
-      --silver-light: #e4e4ec;
-      --silver-muted: #787890;
-      --accent: #9ca8b8;
-      --border: rgba(30, 30, 40, 0.4);
-      --border-glow: rgba(184, 184, 200, 0.08);
-      --text: #e4e4ec;
-      --text-muted: #6a6a7a;
-      --gradient-silver: linear-gradient(135deg, #c8c8d8 0%, #9090a0 50%, #a0a0b0 100%);
-      --gradient-silver-subtle: linear-gradient(180deg, rgba(200,200,216,0.12) 0%, transparent 60%);
-      --silver-glow: rgba(184, 184, 200, 0.25);
-      --silver-glow-soft: rgba(184, 184, 200, 0.12);
+      --bg-dark: #0c0c10;
+      --bg-card: #14141a;
+      --bg-elevated: #1a1a22;
+      --silver: #c4c4d4;
+      --silver-light: #ececf4;
+      --silver-muted: #8c8ca0;
+      --accent: #a8b4c4;
+      --border: rgba(50, 50, 65, 0.5);
+      --border-glow: rgba(184, 184, 200, 0.12);
+      --text: #ececf4;
+      --text-muted: #7a7a8c;
+      --gradient-silver: linear-gradient(135deg, #d4d4e4 0%, #a0a0b8 50%, #b4b4c8 100%);
+      --gradient-silver-subtle: linear-gradient(180deg, rgba(220,220,235,0.15) 0%, transparent 60%);
+      --silver-glow: rgba(200, 200, 220, 0.35);
+      --silver-glow-soft: rgba(200, 200, 220, 0.18);
     }
 
     * {
@@ -52,10 +54,10 @@
       position: fixed;
       inset: 0;
       background: 
-        linear-gradient(180deg, transparent 0%, rgba(20,20,26,0.6) 100%),
-        radial-gradient(ellipse 100% 80% at 50% -30%, rgba(184, 184, 200, 0.12), transparent 50%),
-        radial-gradient(ellipse 70% 50% at 90% 20%, rgba(120, 130, 150, 0.08), transparent 45%),
-        radial-gradient(ellipse 60% 60% at 10% 80%, rgba(100, 110, 130, 0.06), transparent 45%);
+        linear-gradient(180deg, transparent 0%, rgba(26,26,34,0.5) 100%),
+        radial-gradient(ellipse 100% 80% at 50% -30%, rgba(200, 200, 220, 0.2), transparent 50%),
+        radial-gradient(ellipse 70% 50% at 90% 20%, rgba(150, 160, 190, 0.12), transparent 45%),
+        radial-gradient(ellipse 60% 60% at 10% 80%, rgba(130, 140, 170, 0.1), transparent 45%);
       pointer-events: none;
       z-index: 0;
     }
@@ -65,12 +67,12 @@
       position: fixed;
       inset: 0;
       background-image: 
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
       background-size: 64px 64px;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.5;
+      opacity: 0.6;
     }
 
     .container {
@@ -86,11 +88,11 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(6, 6, 8, 0.85);
+      background: rgba(14, 14, 20, 0.88);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      box-shadow: 0 1px 0 0 var(--silver-glow-soft), 0 4px 24px -4px rgba(184, 184, 200, 0.06);
+      box-shadow: 0 1px 0 0 var(--silver-glow-soft), 0 4px 24px -4px rgba(200, 200, 220, 0.1);
     }
 
     .site-header-inner {
@@ -421,7 +423,7 @@
     .community-section {
       margin: 0 -6px;
       padding: 64px 28px 72px;
-      background: linear-gradient(180deg, rgba(20, 20, 26, 0.6) 0%, rgba(14, 14, 18, 0.95) 50%);
+      background: linear-gradient(180deg, rgba(28, 28, 36, 0.5) 0%, rgba(20, 20, 28, 0.92) 50%);
       border-radius: 24px;
       border: 1px solid var(--border);
       box-shadow: 0 0 30px var(--silver-glow-soft), 0 0 60px rgba(184, 184, 200, 0.06), inset 0 0 40px rgba(184, 184, 200, 0.02);
@@ -587,7 +589,7 @@
       <div class="header-left">
         <a href="#home" class="brand">
           <img src="logo_silverinu.png" alt="Silverinu" class="brand-logo" width="36" height="36" />
-          SILVERINU
+          $SILVERINU
         </a>
       </div>
       <div class="header-center">
@@ -600,7 +602,7 @@
         </div>
       </div>
       <div class="header-right">
-        <a href="https://join.pump.fun/HSag/5wibasq4" target="_blank" rel="noopener" class="btn-buy">Buy Silverinu</a>
+        <a href="https://join.pump.fun/HSag/5wibasq4" target="_blank" rel="noopener" class="btn-buy">Buy $SILVERINU</a>
       </div>
     </div>
   </nav>
@@ -608,8 +610,8 @@
   <div class="container">
     <header class="hero" id="home">
       <p class="logo">Silverinu</p>
-      <h1>SILVERINU</h1>
-      <p class="tagline">Trading silver on the blockchain. The meme coin for the precious metals crowd.</p>
+      <h1>$SILVERINU</h1>
+      <p class="tagline">Forged in silver, backed by the pack.</p>
     </header>
 
     <section class="contract-section" id="contract">
@@ -624,12 +626,12 @@
     <section id="about">
       <span class="section-label" aria-hidden="true"></span>
       <h2>About Silverinu</h2>
-      <p class="about-intro">$SILVERINU is a community-driven meme coin on Solana, celebrating silver and commodity vibes on-chain. Trade with the pack.</p>
+      <p class="about-intro">Toly asked for it, so we did! $SILVERINU is a unique meme coin that says no to IRL vibes & promotes the trading of real commodities on the blockchain. Dogs gotta stick together!</p>
 
       <div class="card">
-        <h3>Pump.fun & Solana</h3>
-        <p>Silverinu launched on Pump.fun and trades against SOL. Fast, low fees, and built for the Solana ecosystem.</p>
-        <a href="https://dexscreener.com/solana/am6se8kuxjbuxvywwttigfrax2avqwh5b6qhcjvadxtl" target="_blank" rel="noopener">View on DexScreener →</a>
+        <h3>Co-Founder of Solana Labs requests $SilverInu</h3>
+        <p>You don't need to worry that silverInu will eclipse silver's legacy; it simply amplifies the glow, turning cold metal into a living spark that pulls every eye toward its shimmer.</p>
+        <a href="https://x.com/toly/status/2015635828052021692?s=46" target="_blank" rel="noopener">The Banger →</a>
       </div>
 
       <div class="card">
@@ -641,12 +643,12 @@
 
     <section class="community-section" id="community">
       <span class="section-label" aria-hidden="true"></span>
-      <h2>Join The Community</h2>
-      <p class="community-desc">Connect with Silverinu traders and stay updated on the latest.</p>
+      <h2>Join the Pack!</h2>
+      <p class="community-desc">Immerse yourself in the pulse of $SILVERINU's inner circle, where conviction meets volatility and every new development glints like freshly minted silver.</p>
       <div class="community-links">
-        <a href="https://x.com/SilverInu_CTO" target="_blank" rel="noopener">
+        <a href="https://x.com/i/communities/2018227931307483394" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          X (Twitter)
+          X-Community
         </a>
         <a href="https://dexscreener.com/solana/am6se8kuxjbuxvywwttigfrax2avqwh5b6qhcjvadxtl" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
@@ -691,8 +693,8 @@
         <div class="step">
           <span class="step-num">04</span>
           <div>
-            <h3>Swap for SILVERINU</h3>
-            <p>Swap your SOL for SILVERINU and join the pack.</p>
+            <h3>Swap for $SILVERINU</h3>
+            <p>Swap your SOL for $SILVERINU and join the pack.</p>
           </div>
         </div>
       </div>
