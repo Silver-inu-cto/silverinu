@@ -675,6 +675,13 @@
       .hero {
         padding: 60px 16px 36px;
       }
+      .hero-content h1 {
+        font-size: clamp(1.85rem, 7.5vw, 2.75rem);
+        letter-spacing: -0.03em;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+      }
       .hero .logo {
         font-size: 0.7rem;
         padding: 5px 12px;
@@ -716,6 +723,12 @@
     }
 
     @media (max-width: 480px) {
+      .hero-contract-inner {
+        padding: 0 12px;
+      }
+      .hero-content h1 {
+        font-size: clamp(1.65rem, 6.5vw, 2.25rem);
+      }
       .site-header-inner {
         justify-content: center;
       }
