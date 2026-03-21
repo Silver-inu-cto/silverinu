@@ -7,7 +7,7 @@ Official landing page for **Silverinu** ($SILVERINU) – the meme coin on Solana
 - **Buy:** [Pump.fun](https://join.pump.fun/HSag/5wibasq4)
 - **Chart:** [DexScreener](https://dexscreener.com/solana/am6se8kuxjbuxvywwttigfrax2avqwh5b6qhcjvadxtl)
 - **X (Twitter):** [@SilverInu_CTO](https://x.com/SilverInu_CTO)
-- **Telegram:** [Join](https://t.co/fHR77KpH03)
+- **Telegram:** [@silverinucto](https://t.me/silverinucto)
 
 ## Contract
 
